@@ -49,19 +49,21 @@ export default class Elevator {
 
   hasStop(){
     // add your code here
+    return this.hasPickup() || this.hasDropoff()
   }
 
   hasPickup(){
     // add your code here
+    return true;
   }
 
   hasDropoff(){
     // Check if the elevator is on the drop-off floor of the person
-    const person = this.riders.find(person => person.dropOffFloor === this.currentFloor)
+    const person = this.riders.find(p => p.dropOffFloor === this.currentFloor)
 
     // Check if someone's on the drop-off floor
     if(person){
-      console.log("PERSON: ",this.riders.indexOf(person))
+      this.riders.splice(this.riders.indexOf(person), 1)
       return true
     }
     return false
