@@ -16,17 +16,25 @@ export default class Elevator {
   }
 
   goToFloor(person){
-    //calls elevator to move up if elevator is lower than the persons drop off
-    while (this.currentFloor < person.dropOffFloor) {
+
+    while (this.currentFloor < person.currentFloor) {
       this.moveUp()
     }
-    //calls elevator to move down if elevator is higher than the persons drop off
-    while (this.currentFloor > person.dropOffFloor) {
+    while (this.currentFloor > person.currentFloor) {
       this.moveDown()
     }
 
     //Check if there are any pickups
     this.hasPickup()
+
+    //calls elevator to move up if elevator is lower than the persons drop off
+    while (this.currentFloor < person.dropOffFloor) {
+      this.moveUp()
+    }
+    //calls elevator to move down if the elevator is higher than the persons drop off
+    while (this.currentFloor > person.dropOffFloor) {
+      this.moveDown()
+    }
 
     this.hasDropoff()
   }
