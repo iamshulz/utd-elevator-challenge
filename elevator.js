@@ -16,7 +16,8 @@ export default class Elevator {
   }
 
   goToFloor(person){  
-    // add your code here
+    while (this.currentFloor < person.dropOffFloor) this.moveUp() //calls elevator to move up
+    while (this.currentFloor > person.dropOffFloor) this.moveDown() //calls elevator to move down
   }
 
   moveUp(){
