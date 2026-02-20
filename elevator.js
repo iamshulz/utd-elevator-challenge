@@ -56,14 +56,15 @@ export default class Elevator {
   }
 
   hasDropoff(){
-    // Check if elevator is on the drop-off floor of the person
-    const person = this.requests.find(person => person.dropOffFloor === this.currentFloor)
+    // Check if the elevator is on the drop-off floor of the person
+    const person = this.riders.find(person => person.dropOffFloor === this.currentFloor)
 
-    // Check if someones on the drop-off floor
+    // Check if someone's on the drop-off floor
     if(person){
-
+      console.log("PERSON: ",this.riders.indexOf(person))
+      return true
     }
-
+    return false
   }
 
   checkReturnToLoby(){
