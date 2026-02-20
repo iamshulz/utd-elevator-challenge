@@ -27,6 +27,8 @@ export default class Elevator {
 
     //Check if there are any pickups
     this.hasPickup()
+
+    this.hasDropoff()
   }
 
   moveUp(){
@@ -53,8 +55,14 @@ export default class Elevator {
   }
 
   hasPickup(){
-    // add your code here
-    return true;
+    const person = this.requests.find(p => p.currentFloor === this.currentFloor)
+    if (person) {
+      // basically opposite of drop-off; add them as a rider if request is same with current floor
+      this.requests.splice(this.requests.indexOf(person), 1)
+      this.riders.push(person)
+      return true
+    }
+    return false
   }
 
   hasDropoff(){
@@ -63,6 +71,7 @@ export default class Elevator {
 
     // Check if someone's on the drop-off floor
     if(person){
+      // Get the index of that person and remove them as a rider
       this.riders.splice(this.riders.indexOf(person), 1)
       return true
     }
