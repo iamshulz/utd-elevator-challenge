@@ -47,11 +47,12 @@ export default class Elevator {
   }
 
   hasDropoff(){
-    // add your code here
+    // Check if elevator is on the drop-off floor of the person
+    const person = this.requests.find(person => person.dropOffFloor === this.currentFloor)
   }
 
   checkReturnToLoby(){
-    // add your code here
+    return new Date().getHours() < 12 && !this.riders.length
   }
 
   returnToLoby(){
